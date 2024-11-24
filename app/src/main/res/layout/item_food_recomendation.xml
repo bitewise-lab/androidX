@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardCornerRadius="12dp"
+    android:layout_margin="6dp"
+    app:cardElevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_meal"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="10dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundedImage"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/txt_name_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/img_meal"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/meal_name"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_1"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/txt_name_title"
+            android:layout_marginStart="165dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/color_1"/>
+
+        <!-- Sugar Info -->
+        <TextView
+            android:id="@+id/txt_sugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_name_title"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/img_meal"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/sugar"
+            android:textSize="12sp"
+            android:textColor="@color/color_2"/>
+
+        <TextView
+            android:id="@+id/txt_sugar_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_name_title"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:layout_alignParentEnd="true"
+            android:text="@string/gram"
+            android:textSize="12sp"
+            android:textColor="@color/color_2"/>
+
+        <!-- Fat Info -->
+        <TextView
+            android:id="@+id/txt_fat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_sugar"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/img_meal"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/fat"
+            android:textSize="12sp"
+            android:textColor="@color/color_2"/>
+
+        <TextView
+            android:id="@+id/txt_fat_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_sugar"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="25dp"
+            android:layout_alignParentEnd="true"
+            android:text="@string/gram"
+            android:textSize="12sp"
+            android:textColor="@color/color_2"/>
+
+        <!-- Carbo Info -->
+        <TextView
+            android:id="@+id/txt_carbo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_fat"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/img_meal"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/carbo"
+            android:textSize="12sp"
+            android:textColor="@color/color_2"/>
+
+        <TextView
+            android:id="@+id/txt_carbo_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_fat"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="25dp"
+            android:layout_alignParentEnd="true"
+            android:text="@string/gram"
+            android:textSize="12sp"
+            android:textColor="@color/color_2"/>
+
+        <!-- Protein Info -->
+        <TextView
+            android:id="@+id/txt_protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_carbo"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/img_meal"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/protein"
+            android:textSize="12sp"
+            android:textColor="@color/color_2"/>
+
+        <TextView
+            android:id="@+id/txt_protein_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_carbo"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="25dp"
+            android:layout_alignParentEnd="true"
+            android:text="@string/gram"
+            android:textSize="12sp"
+            android:textColor="@color/color_2"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
