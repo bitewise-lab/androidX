@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/homeFragment">
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.capstone.view.fragments.HomeFragment"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" />
+    <fragment
+        android:id="@+id/analyticsFragment"
+        android:name="com.example.capstone.view.fragments.AnalyticsFragment"
+        android:label="fragment_analytics"
+        tools:layout="@layout/fragment_analytics" />
+    <fragment
+        android:id="@+id/bpmFragment"
+        android:name="com.example.capstone.view.fragments.BpmFragment"
+        android:label="fragment_bpm"
+        tools:layout="@layout/fragment_bpm" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.capstone.view.fragments.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+</navigation>
