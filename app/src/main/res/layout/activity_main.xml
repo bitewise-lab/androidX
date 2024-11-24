@@ -36,7 +36,7 @@
             android:background="@android:color/transparent"
             app:itemIconSize="27dp"
             app:labelVisibilityMode="unlabeled"
-            app:itemIconTint="@color/color_6"
+            app:itemIconTint="@color/bottom_nav_icon_color"
             app:menu="@menu/bottom_nav_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
