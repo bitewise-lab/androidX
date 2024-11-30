@@ -1,5 +1,6 @@
 package com.example.capstone.view.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -24,5 +25,10 @@ class MainActivity : AppCompatActivity() {
         val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHost.navController
         navView.setupWithNavController(navController)
+
+        binding.fab.setOnClickListener {
+            val intent = Intent(this, OcrActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

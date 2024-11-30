@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
-    id("com.google.devtools.ksp")
+//    id("com.google.devtools.ksp")
 }
 
 android {
@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
 
     implementation(libs.glide)
+    implementation(libs.ucrop)
 
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
@@ -73,5 +74,5 @@ dependencies {
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
 
-    ksp(libs.room.compiler)
+//    ksp(libs.room.compiler)
 }
