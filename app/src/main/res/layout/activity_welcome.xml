@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pallete_1"
+    tools:context=".view.activities.welcome">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageItemWidget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:shapeAppearanceOverlay="@style/RoundedImage"
+            tools:srcCompat="@tools:sample/avatars" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bitwise"
+            android:textSize="30sp"
+            android:textColor="@color/pallete_3"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins"
+            android:layout_marginTop="20dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textSize="15sp"
+            android:textColor="@color/pallete_3"
+            android:fontFamily="@font/poppins"
+            android:layout_marginTop="20dp"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="50dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="20dp"
+                android:text="@string/signin"
+                android:textColor="@color/pallete_2"
+                android:backgroundTint="@color/pallete_1"
+                app:strokeColor="@color/pallete_2"
+                app:strokeWidth="2dp"
+                android:padding="15dp"
+                android:textSize="18sp"
+                app:cornerRadius="10dp"
+                app:iconGravity="textStart"
+                app:iconTint="@color/white"
+                app:iconTintMode="src_in" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/register"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/pallete_2"
+                android:padding="15dp"
+                android:textSize="18sp"
+                app:cornerRadius="10dp"
+                app:iconGravity="textStart"
+                app:iconTint="@color/white"
+                app:iconTintMode="src_in" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

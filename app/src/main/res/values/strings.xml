@@ -18,4 +18,8 @@
     <string name="btn_camera">Camera</string>
     <string name="btn_galery">Gallery</string>
     <string name="btn_analyze">Analyze</string>
+    <string name="register">Register</string>
+    <string name="bitwise">Bitewise</string>
+    <string name="description">Dapatkan kontrol penuh atas kesehatan Anda! Bitwise membantu Anda memantau gizi makanan, menjadikan setiap pilihan lebih cerdas dan lebih sehat.</string>
+    <string name="signin">Sign In</string>
 </resources>
