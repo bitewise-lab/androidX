@@ -22,4 +22,10 @@
     <string name="bitwise">Bitewise</string>
     <string name="description">Dapatkan kontrol penuh atas kesehatan Anda! Bitwise membantu Anda memantau gizi makanan, menjadikan setiap pilihan lebih cerdas dan lebih sehat.</string>
     <string name="signin">Sign In</string>
+    <string name="welcome">Welcome Back!</string>
+    <string name="enter_your_details">Please enter your details</string>
+    <string name="invalid_email">Invalid Email!</string>
+    <string name="password_length_error">Password must be at least 8 characters!</string>
+    <string name="hint_email_input">Email</string>
+    <string name="hint_password_input">Password</string>
 </resources>
