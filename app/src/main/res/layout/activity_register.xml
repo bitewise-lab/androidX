@@ -16,6 +16,7 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/tv_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -24,9 +25,11 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="@color/pallete_3"
-            android:fontFamily="@font/poppins_font"/>
+            android:fontFamily="@font/poppins_font"
+            tools:alpha="100"/>
 
         <TextView
+            android:id="@+id/tv_enter_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -34,9 +37,11 @@
             android:textAlignment="center"
             android:textSize="16sp"
             android:textColor="@color/pallete_3"
-            android:fontFamily="@font/poppins_font"/>
+            android:fontFamily="@font/poppins_font"
+            tools:alpha="100"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +56,7 @@
                 android:id="@+id/edit_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_username"
+                android:hint="@string/hint_name"
                 android:inputType="textPersonName"
                 android:textColor="@color/pallete_3"
                 android:padding="12dp"
@@ -61,6 +66,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +81,7 @@
                 android:id="@+id/edit_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_name"
+                android:hint="@string/hint_username"
                 android:inputType="text"
                 android:textColor="@color/pallete_3"
                 android:padding="12dp"
@@ -83,8 +89,8 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Email Input -->
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -108,6 +114,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -139,6 +146,7 @@
             android:weightSum="2">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_weight"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -163,6 +171,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_height"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -196,6 +205,7 @@
             android:weightSum="3">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_sugar"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -220,6 +230,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_cholesterol"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -232,7 +243,6 @@
                 android:layout_weight="1">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:id="@+id/edit_kolesterol"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -245,6 +255,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_blood_pressure"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

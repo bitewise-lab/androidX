@@ -1,5 +1,7 @@
 package com.example.capstone.view.activities
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -79,5 +81,38 @@ class RegisterActivity : AppCompatActivity() {
         }
         supportActionBar?.hide()
     }
+
+//    private fun playAnimation(){
+//        val tvRegister = ObjectAnimator.ofFloat(binding.tvRegister, View.ALPHA, 1f).setDuration(200)
+//        val detail = ObjectAnimator.ofFloat(binding.tvEnterDetails, View.ALPHA, 1f).setDuration(200)
+//        val name = ObjectAnimator.ofFloat(binding.editName, View.ALPHA, 1f).setDuration(125)
+//        val username = ObjectAnimator.ofFloat(binding.editUsername, View.ALPHA, 1f).setDuration(125)
+//        val email = ObjectAnimator.ofFloat(binding.editEmail, View.ALPHA, 1f).setDuration(125)
+//        val password = ObjectAnimator.ofFloat(binding.editPassword, View.ALPHA, 1f).setDuration(125)
+//        val berat = ObjectAnimator.ofFloat(binding.editBeratBadan, View.ALPHA, 1f).setDuration(125)
+//        val tinggi = ObjectAnimator.ofFloat(binding.editTinggiBadan, View.ALPHA, 1f).setDuration(125)
+//        val gulaDarah = ObjectAnimator.ofFloat(binding.editGulaDarah, View.ALPHA, 1f).setDuration(125)
+//        val kolestrol = ObjectAnimator.ofFloat(binding.editKolesterol, View.ALPHA, 1f).setDuration(125)
+//        val tekanan = ObjectAnimator.ofFloat(binding.editTekananDarah, View.ALPHA, 1f).setDuration(125)
+//        val register = ObjectAnimator.ofFloat(binding.btnRegister, View.ALPHA, 1f).setDuration(125)
+//
+//        AnimatorSet().apply {
+//            playSequentially(
+//                tvRegister,
+//                detail,
+//                name,
+//                username,
+//                email,
+//                password,
+//                berat,
+//                tinggi,
+//                gulaDarah,
+//                kolestrol,
+//                tekanan,
+//                register
+//            )
+//            startDelay = 200
+//        }.start()
+//    }
 
 }
