@@ -31,7 +31,7 @@
             android:textSize="30sp"
             android:textColor="@color/pallete_3"
             android:textStyle="bold"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/poppins_font"
             android:layout_marginTop="20dp"
             android:gravity="center"/>
 
@@ -41,7 +41,7 @@
             android:text="@string/description"
             android:textSize="15sp"
             android:textColor="@color/pallete_3"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/poppins_font"
             android:layout_marginTop="20dp"
             android:gravity="center"/>
 
@@ -53,14 +53,15 @@
             android:layout_marginTop="50dp">
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/signInButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="20dp"
                 android:text="@string/signin"
-                android:textColor="@color/pallete_2"
+                android:textColor="@color/pallete_3"
                 android:backgroundTint="@color/pallete_1"
-                app:strokeColor="@color/pallete_2"
+                app:strokeColor="@color/pallete_3"
                 app:strokeWidth="2dp"
                 android:padding="15dp"
                 android:textSize="18sp"
@@ -70,12 +71,13 @@
                 app:iconTintMode="src_in" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/registerButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/register"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/pallete_2"
+                android:backgroundTint="@color/pallete_3"
                 android:padding="15dp"
                 android:textSize="18sp"
                 app:cornerRadius="10dp"

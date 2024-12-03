@@ -1,10 +1,295 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:material="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pallete_1"
     tools:context=".view.activities.RegisterActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/register"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/pallete_3"
+            android:fontFamily="@font/poppins_font"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/enter_your_details"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="@color/pallete_3"
+            android:fontFamily="@font/poppins_font"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:shapeAppearanceOverlay="@style/roundedCorner"
+            app:boxBackgroundColor="@color/pallete_2"
+            android:textColorHint="@color/pallete_3"
+            app:boxStrokeColor="@color/pallete_2"
+            app:hintTextColor="@color/pallete_3"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_username"
+                android:inputType="textPersonName"
+                android:textColor="@color/pallete_3"
+                android:padding="12dp"
+                android:fontFamily="@font/poppins_font"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/pallete_2"
+            android:textColorHint="@color/pallete_3"
+            app:boxStrokeColor="@color/pallete_2"
+            app:hintTextColor="@color/pallete_3"
+            app:shapeAppearanceOverlay="@style/roundedCorner"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_name"
+                android:inputType="text"
+                android:textColor="@color/pallete_3"
+                android:padding="12dp"
+                android:fontFamily="@font/poppins_font"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Email Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/pallete_2"
+            android:textColorHint="@color/pallete_3"
+            app:boxStrokeColor="@color/pallete_2"
+            app:hintTextColor="@color/pallete_3"
+            app:shapeAppearanceOverlay="@style/roundedCorner"
+            android:layout_marginTop="20dp">
+
+            <com.example.capstone.view.customview.EmailEditText
+                android:id="@+id/edit_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/pallete_3"
+                android:padding="12dp"
+                android:fontFamily="@font/poppins_font"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/pallete_2"
+            android:textColorHint="@color/pallete_3"
+            app:boxStrokeColor="@color/pallete_2"
+            app:hintTextColor="@color/pallete_3"
+            app:shapeAppearanceOverlay="@style/roundedCorner"
+            android:layout_marginTop="20dp">
+
+            <com.example.capstone.view.customview.PasswordEditText
+                android:id="@+id/edit_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:textColor="@color/pallete_3"
+                android:padding="12dp"
+                android:fontFamily="@font/poppins_font"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:weightSum="2">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:shapeAppearanceOverlay="@style/roundedCorner"
+                app:boxBackgroundColor="@color/pallete_2"
+                android:textColorHint="@color/pallete_3"
+                app:boxStrokeColor="@color/pallete_2"
+                app:hintTextColor="@color/pallete_3"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_berat_badan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_weight"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/pallete_3"
+                    android:padding="12dp"
+                    android:fontFamily="@font/poppins_font"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/pallete_2"
+                android:textColorHint="@color/pallete_3"
+                app:boxStrokeColor="@color/pallete_2"
+                app:hintTextColor="@color/pallete_3"
+                app:shapeAppearanceOverlay="@style/roundedCorner"
+                android:layout_weight="1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_tinggi_badan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_height"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/pallete_3"
+                    android:padding="12dp"
+                    android:fontFamily="@font/poppins_font"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:weightSum="3">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                app:boxBackgroundColor="@color/pallete_2"
+                android:textColorHint="@color/pallete_3"
+                app:boxStrokeColor="@color/pallete_2"
+                app:hintTextColor="@color/pallete_3"
+                app:shapeAppearanceOverlay="@style/roundedCorner"
+                android:layout_weight="1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_gula_darah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_sugar"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/pallete_3"
+                    android:padding="12dp"
+                    android:fontFamily="@font/poppins_font"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                app:boxBackgroundColor="@color/pallete_2"
+                android:textColorHint="@color/pallete_3"
+                app:boxStrokeColor="@color/pallete_2"
+                app:hintTextColor="@color/pallete_3"
+                app:shapeAppearanceOverlay="@style/roundedCorner"
+                android:layout_weight="1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/edit_kolesterol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_cholesterol"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/pallete_3"
+                    android:padding="12dp"
+                    android:fontFamily="@font/poppins_font"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/pallete_2"
+                android:textColorHint="@color/pallete_3"
+                app:boxStrokeColor="@color/pallete_2"
+                app:hintTextColor="@color/pallete_3"
+                app:shapeAppearanceOverlay="@style/roundedCorner"
+                android:layout_weight="1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_tekanan_darah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_blood_pressure"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/pallete_3"
+                    android:padding="12dp"
+                    android:fontFamily="@font/poppins_font"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/register"
+            android:backgroundTint="@color/pallete_3"
+            android:textColor="@color/pallete_1"
+            android:fontFamily="@font/poppins_font"
+            app:shapeAppearanceOverlay="@style/roundedCorner"/>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/linearProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+</ScrollView>

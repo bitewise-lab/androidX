@@ -28,4 +28,14 @@
     <string name="password_length_error">Password must be at least 8 characters!</string>
     <string name="hint_email_input">Email</string>
     <string name="hint_password_input">Password</string>
+    <string name="hint_name">Input your Name!</string>
+    <string name="hint_username">Input your Username!</string>
+    <string name="hint_email">Input your Email!</string>
+    <string name="hint_password">Input your Password!</string>
+    <string name="hint_weight">Weight in Kg</string>
+    <string name="hint_height">Height in Cm</string>
+    <string name="hint_sugar">Blood Sugar</string>
+    <string name="hint_cholesterol">Cholesterol</string>
+    <string name="hint_blood_pressure">Blood Pressure</string>
+    <string name="login_success">Login Success !</string>
 </resources>

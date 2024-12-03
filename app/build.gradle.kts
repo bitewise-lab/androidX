@@ -17,7 +17,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "API_1", "\"\"")
+        buildConfigField("String", "API_1", "\"https://backend-dot-bitewise-442800.et.r.appspot.com/api/\"")
         buildConfigField("String", "API_2", "\"\"")
     }
 
