@@ -38,4 +38,6 @@
     <string name="hint_cholesterol">Cholesterol</string>
     <string name="hint_blood_pressure">Blood Pressure</string>
     <string name="login_success">Login Success !</string>
+    <string name="permission_granted">Permission Granted !</string>
+    <string name="permission_denied">Permission Denied !</string>
 </resources>

@@ -1,4 +1,8 @@
 package com.example.capstone.view.viewmodel
 
-class OcrViewModel {
+import android.net.Uri
+import androidx.lifecycle.ViewModel
+
+class OcrViewModel: ViewModel() {
+    var currentImage: Uri? = null
 }
