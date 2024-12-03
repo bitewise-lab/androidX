@@ -1,11 +1,15 @@
 package com.example.capstone.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.example.capstone.data.pref.UserPref
 import com.example.capstone.data.remote.response.SignInResponse
 import com.example.capstone.data.remote.response.SignUpResponse
 import com.example.capstone.data.remote.retrofit.ApiService
+import com.example.capstone.data.remote.response.LoginRequest
+import com.example.capstone.data.remote.response.RegisterRequest
+
 
 class AppRepository(
     private val apiService: ApiService,
@@ -16,15 +20,17 @@ class AppRepository(
         username: String,
         email: String,
         password: String,
-        berat: Int,
-        tinggi: Int,
+        berat: Float,
+        tinggi: Float,
         gulaDarah: Float,
         kolestrol: Float,
         tekanan: Float
     ): LiveData<Result<SignUpResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.register(
+            Log.d("API_REQUEST", "Registering with: $name, $username, $email, $berat, $tinggi, $gulaDarah, $kolestrol, $tekanan")
+
+            val registerRequest = RegisterRequest(
                 name,
                 username,
                 email,
@@ -35,19 +41,20 @@ class AppRepository(
                 kolestrol,
                 tekanan
             )
+
+            val response = apiService.register(registerRequest)
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message ?: "An error occurred"))
         }
     }
 
-    fun login(
-        email: String,
-        password: String
-    ): LiveData<Result<SignInResponse>> = liveData {
+    fun login(email: String, password: String): LiveData<Result<SignInResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.login(email, password)
+            Log.d("API_REQUEST", "Logging in with: $email, $password")
+            val loginRequest = LoginRequest(email, password)
+            val response = apiService.login(loginRequest)
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message ?: "An error occurred"))

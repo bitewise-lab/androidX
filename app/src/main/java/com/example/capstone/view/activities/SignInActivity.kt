@@ -3,6 +3,7 @@ package com.example.capstone.view.activities
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -42,6 +43,7 @@ class SignInActivity : AppCompatActivity() {
                     is Result.Error -> {
                         binding.linearProgressBar.visibility = View.GONE
                         Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                        Log.d("API_REQUEST", "email: $email, password: $password")
                     }
                     is Result.Loading -> {
                         binding.linearProgressBar.visibility = View.VISIBLE
@@ -50,8 +52,10 @@ class SignInActivity : AppCompatActivity() {
                         binding.linearProgressBar.visibility = View.GONE
                         if (result.data.error == true) {
                             Toast.makeText(this, result.data.message, Toast.LENGTH_SHORT).show()
+                            Log.d("API_REQUEST", "email: $email, password: $password")
                         } else {
                             result.data.loginResult?.let {
+                                Log.d("API_REQUEST", "email: $email, password: $password")
                                 Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
                                 viewModel.saveToken(it.accessToken?: "")
                                 print(it.accessToken)
