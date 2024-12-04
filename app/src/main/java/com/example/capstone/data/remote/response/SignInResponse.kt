@@ -16,30 +16,39 @@ import com.google.gson.annotations.SerializedName
 
  class LoginResult(
 
-	@field:SerializedName("kolestrol")
-	val kolestrol: String? = null,
+	@field:SerializedName("activity_level")
+	val activityLevel: String? = null,
 
-	@field:SerializedName("berat")
-	val berat: String? = null,
+	@field:SerializedName("imageUrl")
+	val imageUrl: String? = null,
 
 	@field:SerializedName("name")
 	val name: String? = null,
 
-	@field:SerializedName("tekanan")
-	val tekanan: String? = null,
+	@field:SerializedName("weight")
+	val weight: String? = null,
 
-	@field:SerializedName("gulaDarah")
-	val gulaDarah: String? = null,
+	@field:SerializedName("blood_pressure")
+	val bloodPressure: String? = null,
+
+	@field:SerializedName("blood_sugar")
+	val bloodSugar: String? = null,
 
 	@field:SerializedName("accessToken")
 	val accessToken: String? = null,
 
-	@field:SerializedName("tinggi")
-	val tinggi: String? = null,
+	@field:SerializedName("health_condition")
+	val healthCondition: String? = null,
 
 	@field:SerializedName("email")
 	val email: String? = null,
 
 	@field:SerializedName("username")
-	val username: String? = null
+	val username: String? = null,
+
+	@field:SerializedName("height")
+	val height: String? = null,
+
+	@field:SerializedName("bmi")
+	val bmi: String? = null
 )

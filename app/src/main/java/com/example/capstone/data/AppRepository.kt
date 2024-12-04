@@ -1,5 +1,6 @@
 package com.example.capstone.data
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -8,7 +9,11 @@ import com.example.capstone.data.remote.response.SignInResponse
 import com.example.capstone.data.remote.response.SignUpResponse
 import com.example.capstone.data.remote.retrofit.ApiService
 import com.example.capstone.data.remote.response.LoginRequest
-import com.example.capstone.data.remote.response.RegisterRequest
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
 
 
 class AppRepository(
@@ -18,31 +23,45 @@ class AppRepository(
     fun register(
         name: String,
         username: String,
+        age: Int,
         email: String,
         password: String,
-        berat: Float,
-        tinggi: Float,
-        gulaDarah: Float,
-        kolestrol: Float,
-        tekanan: Float
+        weight: Float,
+        height: Float,
+        bloodSugar: Float,
+        bloodPressure: Float,
+        bmi: Float,
+        healthCondition: String,
+        activityLevel: String,
+        imageURL: Uri
     ): LiveData<Result<SignUpResponse>> = liveData {
         emit(Result.Loading)
         try {
-            Log.d("API_REQUEST", "Registering with: $name, $username, $email, $berat, $tinggi, $gulaDarah, $kolestrol, $tekanan")
+            val nameBody = name.toRequestBody("text/plain".toMediaTypeOrNull())
+            val usernameBody = username.toRequestBody("text/plain".toMediaTypeOrNull())
+            val ageBody = age.toString().toRequestBody("text/plain".toMediaTypeOrNull())
+            val emailBody = email.toRequestBody("text/plain".toMediaTypeOrNull())
+            val passwordBody = password.toRequestBody("text/plain".toMediaTypeOrNull())
+            val weightBody = weight.toString().toRequestBody("text/plain".toMediaTypeOrNull())
+            val heightBody = height.toString().toRequestBody("text/plain".toMediaTypeOrNull())
+            val bloodSugarBody =
+                bloodSugar.toString().toRequestBody("text/plain".toMediaTypeOrNull())
+            val bloodPressureBody =
+                bloodPressure.toString().toRequestBody("text/plain".toMediaTypeOrNull())
+            val bmiBody = bmi.toString().toRequestBody("text/plain".toMediaTypeOrNull())
+            val healthConditionBody =
+                healthCondition.toRequestBody("text/plain".toMediaTypeOrNull())
+            val activityLevelBody = activityLevel.toRequestBody("text/plain".toMediaTypeOrNull())
 
-            val registerRequest = RegisterRequest(
-                name,
-                username,
-                email,
-                password,
-                berat,
-                tinggi,
-                gulaDarah,
-                kolestrol,
-                tekanan
+            val file = File(imageURL.path!!)
+            val requestBody = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imagePart = MultipartBody.Part.createFormData("imageFile", file.name, requestBody)
+
+            val response = apiService.register(
+                nameBody, usernameBody, ageBody, emailBody, passwordBody,
+                weightBody, heightBody, bloodSugarBody, bloodPressureBody,
+                bmiBody, healthConditionBody, activityLevelBody, imagePart
             )
-
-            val response = apiService.register(registerRequest)
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message ?: "An error occurred"))
@@ -64,8 +83,6 @@ class AppRepository(
     suspend fun saveToken(token: String) {
         userPref.saveToken(token)
     }
-
-
 
 
     companion object {

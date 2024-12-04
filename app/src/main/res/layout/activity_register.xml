@@ -40,6 +40,23 @@
             android:fontFamily="@font/poppins_font"
             tools:alpha="100"/>
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageItemWidget"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="30dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.342"
+            app:shapeAppearanceOverlay="@style/RoundedImage"
+            android:src="@drawable/img_placeholder" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -86,6 +103,30 @@
                 android:textColor="@color/pallete_3"
                 android:padding="12dp"
                 android:fontFamily="@font/poppins_font"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_age"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/pallete_2"
+            android:textColorHint="@color/pallete_3"
+            app:boxStrokeColor="@color/pallete_2"
+            app:hintTextColor="@color/pallete_3"
+            app:shapeAppearanceOverlay="@style/roundedCorner"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_font"
+                android:hint="@string/hint_age"
+                android:inputType="numberDecimal"
+                android:padding="12dp"
+                android:textColor="@color/pallete_3" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -202,7 +243,7 @@
             android:baselineAligned="false"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:weightSum="3">
+            android:weightSum="2">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_sugar"
@@ -222,31 +263,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_sugar"
-                    android:inputType="numberDecimal"
-                    android:textColor="@color/pallete_3"
-                    android:padding="12dp"
-                    android:fontFamily="@font/poppins_font"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_cholesterol"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                app:boxBackgroundColor="@color/pallete_2"
-                android:textColorHint="@color/pallete_3"
-                app:boxStrokeColor="@color/pallete_2"
-                app:hintTextColor="@color/pallete_3"
-                app:shapeAppearanceOverlay="@style/roundedCorner"
-                android:layout_weight="1">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_kolesterol"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_cholesterol"
                     android:inputType="numberDecimal"
                     android:textColor="@color/pallete_3"
                     android:padding="12dp"
@@ -280,6 +296,66 @@
 
         </LinearLayout>
 
+<!--        <Spinner-->
+<!--            android:id="@+id/spinner_health_condition"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="55dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:entries="@array/health_condition_array"-->
+<!--            android:importantForAccessibility="yes"-->
+<!--            android:spinnerMode="dropdown"-->
+<!--            android:popupBackground="@drawable/rounded_spinner_background"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:background="@drawable/rounded_spinner_background"-->
+<!--            />-->
+
+<!--        <Spinner-->
+<!--            android:id="@+id/spinner_activity_level"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="55dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:entries="@array/activity_level_array"-->
+<!--            android:importantForAccessibility="yes"-->
+<!--            android:spinnerMode="dropdown"-->
+<!--            android:popupBackground="@drawable/rounded_spinner_background"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:background="@drawable/rounded_spinner_background"-->
+<!--            style="@style/textColor"/>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:weightSum="2">
+
+            <Spinner
+                android:id="@+id/spinner_health_condition"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:importantForAccessibility="yes"
+                android:spinnerMode="dropdown"
+                android:popupBackground="@drawable/rounded_spinner_background"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_spinner_background"
+                android:layout_marginEnd="10dp"
+                android:entries="@array/health_condition_array" />
+
+            <Spinner
+                android:id="@+id/spinner_activity_level"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:importantForAccessibility="yes"
+                android:spinnerMode="dropdown"
+                android:popupBackground="@drawable/rounded_spinner_background"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_spinner_background"
+                android:entries="@array/activity_level_array" />
+        </LinearLayout>
+
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
@@ -289,7 +365,7 @@
             android:backgroundTint="@color/pallete_3"
             android:textColor="@color/pallete_1"
             android:fontFamily="@font/poppins_font"
-            app:shapeAppearanceOverlay="@style/roundedCorner"/>
+            app:shapeAppearanceOverlay="@style/roundedCorner" />
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/linearProgressBar"
@@ -303,5 +379,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
+
 
 </ScrollView>

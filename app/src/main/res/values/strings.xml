@@ -40,4 +40,22 @@
     <string name="login_success">Login Success !</string>
     <string name="permission_granted">Permission Granted !</string>
     <string name="permission_denied">Permission Denied !</string>
+    <string name="hint_age">Input your Age!</string>
+    <string name="hint_health_condition">Health Condition</string>
+    <string name="hint_activity_level">Activity Level</string>
+
+
+    <string-array name="health_condition_array">
+        <item>Diabetic</item>
+        <item>Obese</item>
+        <item>Heart Disease</item>
+        <item>Healthy</item>
+        <item>Hypertension</item>
+    </string-array>
+
+    <string-array name="activity_level_array">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
 </resources>
