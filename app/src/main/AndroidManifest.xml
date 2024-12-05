@@ -22,12 +22,6 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
-            android:name=".view.activities.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.activities.SignInActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.activities.WelcomeActivity"
             android:exported="true">
 
