@@ -4,11 +4,13 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.example.capstone.data.pref.UserModel
 import com.example.capstone.data.pref.UserPref
 import com.example.capstone.data.remote.response.SignInResponse
 import com.example.capstone.data.remote.response.SignUpResponse
 import com.example.capstone.data.remote.retrofit.ApiService
 import com.example.capstone.data.remote.response.LoginRequest
+import kotlinx.coroutines.flow.Flow
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -74,6 +76,26 @@ class AppRepository(
             Log.d("API_REQUEST", "Logging in with: $email, $password")
             val loginRequest = LoginRequest(email, password)
             val response = apiService.login(loginRequest)
+            if (response.error == false) {
+                response.loginResult?.let { loginResult ->
+                    val userModel = UserModel(
+                        name = loginResult.name ?: "",
+                        username = loginResult.username ?: "",
+                        email = loginResult.email ?: "",
+                        weight = loginResult.weight ?: "0",
+                        height = loginResult.height ?: "0",
+                        blood_sugar = loginResult.bloodSugar ?: "0",
+                        blood_pressure = loginResult.bloodPressure ?: "0",
+                        bmi = loginResult.bmi ?: "0",
+                        health_condition = loginResult.healthCondition ?: "",
+                        activity_level = loginResult.activityLevel ?: "",
+                        imageURL = loginResult.imageUrl ?: "",
+                        isLoggedIn = true,
+                        token = loginResult.accessToken ?: ""
+                    )
+                    saveSession(userModel)
+                }
+            }
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message ?: "An error occurred"))
@@ -82,6 +104,19 @@ class AppRepository(
 
     suspend fun saveToken(token: String) {
         userPref.saveToken(token)
+    }
+
+    suspend fun saveSession(user: UserModel) {
+        Log.d("USER REPOSITORY", "Saving user session: $user")
+        userPref.saveSession(user)
+    }
+
+    fun getSession(): Flow<UserModel> {
+        return userPref.getSession()
+    }
+
+    suspend fun logout() {
+        userPref.logout()
     }
 
 
