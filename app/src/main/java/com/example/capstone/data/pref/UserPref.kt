@@ -1,5 +1,6 @@
 package com.example.capstone.data.pref
 
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -21,6 +22,7 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
     suspend fun saveToken(token: String) {
         dataStore.edit { preferences ->
             preferences[KEY_TOKEN] = token
+            Log.d("DATASTORE", "Token saved: $token")
         }
     }
 
@@ -37,8 +39,14 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
             preferences[KEY_HEALTH_CONDITION] = user.health_condition
             preferences[KEY_ACTIVITY_LEVEL] = user.activity_level
             preferences[KEY_IMAGE_URL] = user.imageURL
-            preferences[KEY_IS_LOGGED_IN] = true // Assuming the user is logged in
+            preferences[KEY_IS_LOGGED_IN] = true
             preferences[KEY_TOKEN] = user.token
+        }
+    }
+
+    suspend fun saveSessionImageUrl(user: String) {
+        dataStore.edit { preferences ->
+            preferences[KEY_IMAGE_URL] = user
         }
     }
 
@@ -77,7 +85,8 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
     companion object {
         private val KEY_TOKEN = stringPreferencesKey("token")
         @Volatile
-        private var instance: UserPref? = null
+        private var INSTANCE: UserPref? = null
+
 
         private val KEY_NAME = stringPreferencesKey("name")
         private val KEY_USERNAME = stringPreferencesKey("username")
@@ -96,8 +105,10 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
 
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPref {
-            return instance ?: synchronized(this) {
-                instance ?: UserPref(dataStore).also { instance = it }
+            return INSTANCE ?: synchronized(this) {
+                val instance = UserPref(dataStore)
+                INSTANCE = instance
+                instance
             }
         }
     }

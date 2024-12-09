@@ -43,6 +43,11 @@
     <string name="hint_age">Input your Age!</string>
     <string name="hint_health_condition">Health Condition</string>
     <string name="hint_activity_level">Activity Level</string>
+    <string name="sign_out">Logout</string>
+    <string name="sign_out_confirmation">Are you sure to Logout?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="post">Post</string>
 
 
     <string-array name="health_condition_array">

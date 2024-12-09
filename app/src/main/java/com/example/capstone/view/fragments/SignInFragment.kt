@@ -10,23 +10,28 @@ import android.view.ViewGroup
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.capstone.R
+import androidx.lifecycle.lifecycleScope
 import com.example.capstone.databinding.FragmentSignInBinding
 import com.example.capstone.view.viewmodel.SignInViewModel
 import com.example.capstone.view.viewmodel.ViewModelFactory
 import com.example.capstone.data.Result
+import com.example.capstone.data.pref.UserPref
 import com.example.capstone.view.activities.MainActivity
+import com.example.capstone.view.viewmodel.dataStore
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class SignInFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentSignInBinding
+    private lateinit var userPref: UserPref
 
     private val viewModel by viewModels<SignInViewModel> {
         ViewModelFactory.getInstance(requireContext())
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +47,8 @@ class SignInFragment : BottomSheetDialogFragment() {
             bottomSheetDialog.behavior.peekHeight = 1500
             bottomSheetDialog.behavior.maxHeight = 1500
         }
+
+        userPref = UserPref.getInstance(requireContext().dataStore)
         return binding.root
     }
 
@@ -73,17 +80,27 @@ class SignInFragment : BottomSheetDialogFragment() {
                             Toast.makeText(requireContext(), result.data.message, Toast.LENGTH_SHORT).show()
                             Log.d("API_REQUEST", "email: $email, password: $password")
                         } else {
-                            result.data.loginResult?.let {
-                                Log.d("API_REQUEST", "email: $email, password: $password")
-                                Toast.makeText(requireContext(), getString(R.string.login_success), Toast.LENGTH_SHORT).show()
-                                viewModel.saveToken(it.accessToken ?: "")
-                                print(it.accessToken)
-//                                updateWidget()
-                                parentFragmentManager.popBackStack()
-                                startActivity(Intent(requireContext(), MainActivity::class.java))
-                                dismiss()
+                            Toast.makeText(requireContext(), result.data.message, Toast.LENGTH_SHORT).show()
+                            Log.d("API_REQUEST", "email: $email, password: $password")
+                            lifecycleScope.launch {
+                                result.data.loginResult?.accessToken?.let { it1 ->
+                                    viewModel.saveToken(
+                                        it1
+                                    )
+                                }
 
-                                dismiss()
+                                result.data.loginResult?.imageUrl?.let { it2 ->
+                                    viewModel.saveSessionImageUrl(
+                                        it2
+                                    )
+                                    Log.d("API_REQUEST", "Session : $it2")
+                                }
+
+                                val token = runBlocking { viewModel.getToken() }
+                                Log.d("TOKEN", token.toString())
+                                val intent = Intent(requireContext(), MainActivity::class.java)
+                                startActivity(intent)
+                                requireActivity().finish()
                             }
                         }
                     }

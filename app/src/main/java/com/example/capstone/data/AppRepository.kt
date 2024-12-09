@@ -10,7 +10,9 @@ import com.example.capstone.data.remote.response.SignInResponse
 import com.example.capstone.data.remote.response.SignUpResponse
 import com.example.capstone.data.remote.retrofit.ApiService
 import com.example.capstone.data.remote.response.LoginRequest
+import com.example.capstone.data.remote.response.PostResponse
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -76,26 +78,6 @@ class AppRepository(
             Log.d("API_REQUEST", "Logging in with: $email, $password")
             val loginRequest = LoginRequest(email, password)
             val response = apiService.login(loginRequest)
-            if (response.error == false) {
-                response.loginResult?.let { loginResult ->
-                    val userModel = UserModel(
-                        name = loginResult.name ?: "",
-                        username = loginResult.username ?: "",
-                        email = loginResult.email ?: "",
-                        weight = loginResult.weight ?: "0",
-                        height = loginResult.height ?: "0",
-                        blood_sugar = loginResult.bloodSugar ?: "0",
-                        blood_pressure = loginResult.bloodPressure ?: "0",
-                        bmi = loginResult.bmi ?: "0",
-                        health_condition = loginResult.healthCondition ?: "",
-                        activity_level = loginResult.activityLevel ?: "",
-                        imageURL = loginResult.imageUrl ?: "",
-                        isLoggedIn = true,
-                        token = loginResult.accessToken ?: ""
-                    )
-                    saveSession(userModel)
-                }
-            }
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message ?: "An error occurred"))
@@ -106,9 +88,18 @@ class AppRepository(
         userPref.saveToken(token)
     }
 
+    suspend fun getToken(): String? {
+        return userPref.getToken().first()
+    }
+
     suspend fun saveSession(user: UserModel) {
         Log.d("USER REPOSITORY", "Saving user session: $user")
         userPref.saveSession(user)
+    }
+
+    suspend fun saveSessionImgUrl(user: String) {
+        Log.d("USER REPOSITORY", "Saving user session: $user")
+        userPref.saveSessionImageUrl(user)
     }
 
     fun getSession(): Flow<UserModel> {
@@ -119,6 +110,48 @@ class AppRepository(
         userPref.logout()
     }
 
+    fun post(
+        description: String,
+        image: Uri
+    ): LiveData<Result<PostResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val descriptionBody = description.toRequestBody("text/plain".toMediaTypeOrNull())
+
+            val file = File(image.path!!)
+            if (!file.exists()) {
+                Log.e("IMG_PATH", "Image file does not exist")
+            }
+            val requestBody = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imagePart = MultipartBody.Part.createFormData("imageFile", file.name, requestBody)
+
+            val token = userPref.getToken().first()
+            val response = apiService.post("Bearer $token", descriptionBody, imagePart)
+            Log.d("TOKEN_INFO", "Posting with token: $token")
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message ?: "An error occurred"))
+            val token = userPref.getToken().first()
+            Log.d("TOKEN_INFO", "Posting with token: $token")
+        }
+    }
+
+    fun getPostList(): LiveData<Result<PostResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val token = userPref.getToken().first()
+            val response = apiService.getStories("Bearer $token")
+
+            if (response.post.isNullOrEmpty()) {
+                emit(Result.Error("No posts found"))
+            } else {
+                emit(Result.Success(response))
+            }
+        } catch (e: Exception) {
+            emit(Result.Error(e.message ?: "An error occurred"))
+            Log.e("API_ERROR", "Error saat mengambil data: ${e.message}")
+        }
+    }
 
     companion object {
         @Volatile

@@ -50,5 +50,8 @@ import com.google.gson.annotations.SerializedName
 	val height: String? = null,
 
 	@field:SerializedName("bmi")
-	val bmi: String? = null
+	val bmi: String? = null,
+
+ 	@field:SerializedName("age")
+	val age: Int? = null
 )

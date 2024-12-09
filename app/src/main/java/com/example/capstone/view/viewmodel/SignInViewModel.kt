@@ -3,7 +3,6 @@ package com.example.capstone.view.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.capstone.data.AppRepository
-import com.example.capstone.data.pref.UserModel
 import kotlinx.coroutines.launch
 
 class SignInViewModel(private val repository: AppRepository): ViewModel() {
@@ -15,7 +14,11 @@ class SignInViewModel(private val repository: AppRepository): ViewModel() {
         }
     }
 
-    private suspend fun saveSession(user: UserModel) {
-        repository.saveSession(user)
+     suspend fun saveSessionImageUrl(user: String) {
+        repository.saveSessionImgUrl(user)
+    }
+
+    suspend fun getToken(): String? {
+        return repository.getToken()
     }
 }

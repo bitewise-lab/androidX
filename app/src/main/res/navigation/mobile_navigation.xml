@@ -26,4 +26,24 @@
         android:name="com.example.capstone.view.fragments.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
+    <dialog
+        android:id="@+id/signInFragment"
+        android:name="com.example.capstone.view.fragments.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
+    <dialog
+        android:id="@+id/registerFragment"
+        android:name="com.example.capstone.view.fragments.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+    <activity
+        android:id="@+id/ocrActivity"
+        android:name="com.example.capstone.view.activities.OcrActivity"
+        android:label="activity_ocr"
+        tools:layout="@layout/activity_ocr" />
+    <activity
+        android:id="@+id/welcomeActivity"
+        android:name="com.example.capstone.view.activities.WelcomeActivity"
+        android:label="activity_welcome"
+        tools:layout="@layout/activity_welcome" />
 </navigation>

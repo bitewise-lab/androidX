@@ -21,12 +21,9 @@ class ViewModelFactory(private val repository: AppRepository, preferences: UserP
             modelClass.isAssignableFrom(SignInViewModel::class.java) -> {
                 SignInViewModel(repository) as T
             }
-//            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-//                HomeViewModel(repository) as T
-//            }
-//            modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
-//                AddStoryViewModel(repository) as T
-//            }
+            modelClass.isAssignableFrom(PostViewModel::class.java) -> {
+                PostViewModel(repository) as T
+            }
             modelClass.isAssignableFrom(AccountViewModel::class.java) -> {
                 AccountViewModel(repository) as T
             }
@@ -40,7 +37,11 @@ class ViewModelFactory(private val repository: AppRepository, preferences: UserP
         fun getInstance(context: Context): ViewModelFactory =
             instance ?: synchronized(this) {
                 val preferences = UserPref.getInstance(context.dataStore)
-                instance ?: ViewModelFactory(Injection.provideAppRepository(context), preferences)
+                instance ?: ViewModelFactory(
+                    Injection.provideAppRepository(context),
+                    preferences
+                )
             }.also { instance = it }
+
     }
 }

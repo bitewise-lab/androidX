@@ -75,4 +75,6 @@ dependencies {
     implementation(libs.camera.view)
 
 //    ksp(libs.room.compiler)
+
+    implementation (libs.androidx.recyclerview)
 }
