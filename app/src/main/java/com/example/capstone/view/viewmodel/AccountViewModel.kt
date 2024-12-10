@@ -12,34 +12,12 @@ import com.example.capstone.data.remote.response.PostResponse
 import kotlinx.coroutines.launch
 
 class AccountViewModel(private val repository: AppRepository): ViewModel() {
-//    private val _posts = MutableLiveData<Result<PostResponse>>()
-//    val posts: LiveData<Result<PostResponse>> = _posts
-
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
-    }
-
-    fun logout() {
-        viewModelScope.launch {
-            repository.logout()
-        }
     }
 
     fun getPostList(): LiveData<Result<PostResponse>> {
         return repository.getPostList()
     }
 
-//    init {
-//        fetchPosts()
-//    }
-//
-//    private fun fetchPosts() {
-//        repository.getPostList().observeForever {
-//            _posts.value = it
-//        }
-//    }
-//
-//    fun refresh() {
-//        fetchPosts()
-//    }
 }
