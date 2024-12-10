@@ -70,8 +70,6 @@ class HomeFragment : Fragment() {
         binding.rvPost.adapter = postAdapter
         binding.rvPost.layoutManager = LinearLayoutManager(requireContext())
 
-        binding.rvPost.layoutManager = LinearLayoutManager(requireContext())
-
 
         if (!allPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)

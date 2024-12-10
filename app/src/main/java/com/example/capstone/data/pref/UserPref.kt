@@ -44,9 +44,10 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
         }
     }
 
-    suspend fun saveSessionImageUrl(user: String) {
+    suspend fun saveSessionImageUrl(name: String, image: String) {
         dataStore.edit { preferences ->
-            preferences[KEY_IMAGE_URL] = user
+            preferences[KEY_NAME] = name
+            preferences[KEY_IMAGE_URL] = image
         }
     }
 

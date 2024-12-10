@@ -27,6 +27,9 @@ class ViewModelFactory(private val repository: AppRepository, preferences: UserP
             modelClass.isAssignableFrom(AccountViewModel::class.java) -> {
                 AccountViewModel(repository) as T
             }
+            modelClass.isAssignableFrom(CommentViewModel::class.java) -> {
+                CommentViewModel(repository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
     }

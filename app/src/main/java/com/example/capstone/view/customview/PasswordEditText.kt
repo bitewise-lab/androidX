@@ -20,6 +20,7 @@ class PasswordEditText @JvmOverloads constructor(context: Context, attrs: Attrib
                 if (!password.isNullOrEmpty() && password.length < 8) {
                     error = context.getString(R.string.password_length_error)
                 }
+                setPadding(paddingLeft, paddingTop, 125, paddingBottom)
             }
 
             override fun afterTextChanged(s: Editable?) { }

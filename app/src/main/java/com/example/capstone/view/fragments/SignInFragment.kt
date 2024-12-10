@@ -16,6 +16,7 @@ import com.example.capstone.databinding.FragmentSignInBinding
 import com.example.capstone.view.viewmodel.SignInViewModel
 import com.example.capstone.view.viewmodel.ViewModelFactory
 import com.example.capstone.data.Result
+import com.example.capstone.data.pref.UserModel
 import com.example.capstone.data.pref.UserPref
 import com.example.capstone.view.activities.MainActivity
 import com.example.capstone.view.viewmodel.dataStore
@@ -91,9 +92,30 @@ class SignInFragment : BottomSheetDialogFragment() {
 
                                 result.data.loginResult?.imageUrl?.let { it2 ->
                                     viewModel.saveSessionImageUrl(
+                                        result.data.loginResult.name.toString(),
                                         it2
                                     )
-                                    Log.d("API_REQUEST", "Session : $it2")
+                                    Log.d("API_REQUEST", "Session : $it2 & ${result.data.loginResult.name.toString()}")
+                                }
+
+                                result.data.loginResult?.let { loginResult ->
+                                    val user = UserModel(
+                                        name = loginResult.name ?: "",
+                                        username = loginResult.username ?: "",
+                                        email = email,
+                                        weight = loginResult.weight?: "",
+                                        height = loginResult.height ?: "",
+                                        blood_sugar = loginResult.bloodSugar ?: "",
+                                        blood_pressure = loginResult.bloodPressure ?: "",
+                                        bmi = loginResult.bmi ?: "",
+                                        health_condition = loginResult.healthCondition ?: "",
+                                        activity_level = loginResult.activityLevel ?: "",
+                                        imageURL = loginResult.imageUrl ?: "",
+                                        isLoggedIn = true,
+                                        token = loginResult.accessToken?: ""
+                                    )
+                                    viewModel.saveSession(user)
+                                    Log.d("API_REQUEST", "Session : $user")
                                 }
 
                                 val token = runBlocking { viewModel.getToken() }

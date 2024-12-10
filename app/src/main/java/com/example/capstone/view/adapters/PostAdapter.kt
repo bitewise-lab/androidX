@@ -1,7 +1,9 @@
 package com.example.capstone.view.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.capstone.R
 import com.example.capstone.data.remote.response.Post
 import com.example.capstone.databinding.ItemPostBinding
+import com.example.capstone.view.fragments.CommentFragment
 
 class PostAdapter : ListAdapter<Post, PostAdapter.MyViewHolder>(DIFF_CALLBACKS) {
 
@@ -27,6 +30,14 @@ class PostAdapter : ListAdapter<Post, PostAdapter.MyViewHolder>(DIFF_CALLBACKS) 
                 .placeholder(R.drawable.ic_image)
                 .error(R.drawable.ic_image)
                 .into(binding.imgUser)
+
+            binding.btnComment.setOnClickListener {
+                val postId = post.id ?: return@setOnClickListener
+                Log.d("PostAdapter", "postId: $postId")
+                val commentFragment = CommentFragment.newInstance(postId)
+                val fragmentManager = (itemView.context as AppCompatActivity).supportFragmentManager
+                commentFragment.show(fragmentManager, "CommentFragment")
+            }
         }
     }
 

@@ -20,7 +20,7 @@ class PostViewModel(private val repository: AppRepository): ViewModel() {
         fetchPosts()
     }
 
-    fun fetchPosts() {
+    private fun fetchPosts() {
         repository.getPostList().observeForever {
             _posts.value = it
         }
