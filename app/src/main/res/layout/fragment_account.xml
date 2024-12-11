@@ -73,12 +73,15 @@
         android:layout_marginTop="20dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_post_per_account"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:listitem="@layout/item_post_per_account"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

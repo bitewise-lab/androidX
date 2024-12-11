@@ -3,6 +3,7 @@ package com.example.capstone.data
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.example.capstone.data.pref.UserModel
 import com.example.capstone.data.pref.UserPref
@@ -24,9 +25,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
 
 
 class AppRepository(
@@ -185,32 +183,29 @@ class AppRepository(
         }
     }
 
-    fun getPostComments(postId: String): LiveData<Result<List<CommentRequest>>> = liveData {
-        emit(Result.Loading)
-        try {
-            val comments = suspendCoroutine<List<CommentRequest>> { cont ->
-                database.child("posts").child(postId).child("comments")
-                    .addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            val commentsList = mutableListOf<CommentRequest>()
-                            for (data in snapshot.children) {
-                                val comment = data.getValue(CommentRequest::class.java)
-                                if (comment != null) {
-                                    commentsList.add(comment)
-                                }
-                            }
-                            cont.resume(commentsList)
-                        }
+    fun observePostComments(postId: String): LiveData<Result<List<CommentRequest>>> {
+        val liveData = MutableLiveData<Result<List<CommentRequest>>>()
 
-                        override fun onCancelled(error: DatabaseError) {
-                            cont.resumeWithException(Exception(error.message))
-                        }
-                    })
+        val listener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val commentsList = mutableListOf<CommentRequest>()
+                for (data in snapshot.children) {
+                    val comment = data.getValue(CommentRequest::class.java)
+                    if (comment != null) {
+                        commentsList.add(comment)
+                    }
+                }
+                liveData.postValue(Result.Success(commentsList))
             }
-            emit(Result.Success(comments))
-        } catch (e: Exception) {
-            emit(Result.Error(e.message ?: "An error occurred"))
+
+            override fun onCancelled(error: DatabaseError) {
+                liveData.postValue(Result.Error(error.message))
+            }
         }
+
+        database.child("posts").child(postId).child("comments").addValueEventListener(listener)
+
+        return liveData
     }
 
     companion object {

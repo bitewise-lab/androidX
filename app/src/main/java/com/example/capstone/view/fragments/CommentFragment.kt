@@ -134,7 +134,7 @@ class CommentFragment : BottomSheetDialogFragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.getPostComments(postId.toString()).observe(viewLifecycleOwner) { result ->
+        viewModel.observePostComments(postId.toString()).observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Success -> {
                     commentAdapter.submitList(result.data)
@@ -161,5 +161,10 @@ class CommentFragment : BottomSheetDialogFragment() {
             )
         }
         requireActivity().actionBar?.hide()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        observeViewModel()
     }
 }

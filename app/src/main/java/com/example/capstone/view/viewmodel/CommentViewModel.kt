@@ -13,10 +13,10 @@ class CommentViewModel(private val repository: AppRepository) : ViewModel() {
     }
 
     fun refresh(postId: String) {
-        getPostComments(postId)
+        observePostComments(postId)
     }
 
-    fun getPostComments(postId: String): LiveData<Result<List<CommentRequest>>> {
-        return repository.getPostComments(postId)
+    fun observePostComments(postId: String): LiveData<Result<List<CommentRequest>>> {
+        return repository.observePostComments(postId)
     }
 }
