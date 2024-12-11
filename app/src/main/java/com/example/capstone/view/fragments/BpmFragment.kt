@@ -5,56 +5,85 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.capstone.R
+import androidx.fragment.app.viewModels
+import com.example.capstone.databinding.FragmentBpmBinding
+import com.example.capstone.view.viewmodel.AccountViewModel
+import com.example.capstone.view.viewmodel.ViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [BpmFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BpmFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val viewModel by viewModels<AccountViewModel> {
+        ViewModelFactory.getInstance(requireActivity())
     }
+
+    private var _binding: FragmentBpmBinding?= null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bpm, container, false)
+
+        _binding =  FragmentBpmBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+
+        return root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BpmFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BpmFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getSession().observe(requireActivity()) { user ->
+            val BMI = user.bmi.toFloat()
+            val BloodSugar = user.blood_sugar.toFloat()
+            val BloodPressure = user.blood_pressure.toFloat()
+            startBMIBar(BMI)
+            startBloodSugarBar(BloodSugar)
+            startBloodPressureBar(BloodPressure)
+        }
+    }
+
+    private fun startBMIBar(bmi: Float) {
+        binding.BMiBar.setMaxValues(30F)
+        binding.BMiBar.setCurrentValues(bmi)
+        if(bmi < 18.5F ){
+            binding.BMiBar.setUnit("UnderWeight")
+        } else if (18.5F <= bmi && bmi < 25F){
+            binding.BMiBar.setUnit("Normal")
+        } else if (25F <= bmi && bmi < 30F){
+            binding.BMiBar.setUnit("OverWeight")
+        } else {
+            binding.BMiBar.setUnit("Obesity")
+        }
+    }
+
+    private fun startBloodSugarBar(bloodSugar: Float){
+        binding.BloodSugarBar.setMaxValues(240F)
+        binding.BloodSugarBar.setCurrentValues(bloodSugar)
+        if(54F <= bloodSugar  && bloodSugar < 70F ){
+            binding.BloodSugarBar.setUnit("Low")
+        } else if (70F <= bloodSugar && bloodSugar < 200F){
+            binding.BloodSugarBar.setUnit("Normal")
+        } else if (200F <= bloodSugar && bloodSugar < 240F){
+            binding.BloodSugarBar.setUnit("High")
+        } else {
+            binding.BloodSugarBar.setUnit("Danger")
+        }
+    }
+
+    private fun startBloodPressureBar(bloodPressure : Float){
+        binding.BloodPressureBar.setMaxValues(180F)
+        binding.BloodPressureBar.setCurrentValues(bloodPressure)
+        if(bloodPressure < 90F ){
+            binding.BloodPressureBar.setUnit("Hypotension")
+        } else if (90F <= bloodPressure && bloodPressure < 140F){
+            binding.BloodPressureBar.setUnit("Normal")
+        } else if (140F <= bloodPressure && bloodPressure < 180F){
+            binding.BloodPressureBar.setUnit("Hypertension")
+        } else {
+            binding.BloodPressureBar.setUnit("Crisis")
+        }
     }
 }
