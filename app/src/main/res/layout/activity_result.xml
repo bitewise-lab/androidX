@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:scrollbars="none"
+    tools:context=".view.activities.ResultActivity"
+    tools:ignore="Overdraw">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/analysis_results"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/pallete_3"/>
+
+        <ImageView
+            android:id="@+id/result_image"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/analyze"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/result_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/pallete_3"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            tools:text="@string/analytics" />
+
+        <TextView
+            android:id="@+id/result_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:maxLines="3"
+            android:textColor="@color/pallete_3"
+            tools:text="@string/description_analytics" />
+
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/pallete_3"
+            android:fontFamily="@font/poppins_font"
+            android:text="@string/back"
+            android:textColor="@color/pallete_1"
+            android:textSize="15sp"
+            app:shapeAppearanceOverlay="@style/roundedCorner" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/linearProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:indicatorColor="@color/pallete_3" />
+
+    </LinearLayout>
+
+</ScrollView>

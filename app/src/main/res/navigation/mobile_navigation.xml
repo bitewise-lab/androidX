@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_home_page" />
     <fragment
         android:id="@+id/analyticsFragment"
-        android:name="com.example.capstone.view.fragments.AnalyticsFragment"
+        android:name="com.example.capstone.view.fragments.RecomendationFragment"
         android:label="fragment_analytics"
-        tools:layout="@layout/fragment_analytics" />
+        tools:layout="@layout/fragment_recomendation" />
     <fragment
         android:id="@+id/bpmFragment"
         android:name="com.example.capstone.view.fragments.BpmFragment"
@@ -45,4 +45,13 @@
         android:name="com.example.capstone.view.activities.WelcomeActivity"
         android:label="activity_welcome"
         tools:layout="@layout/activity_welcome" />
+    <activity
+        android:id="@+id/resultActivity"
+        android:name="com.example.capstone.view.activities.ResultActivity"
+        android:label="activity_result"
+        tools:layout="@layout/activity_result" />
+    <dialog
+        android:id="@+id/commentFragment"
+        android:name="com.example.capstone.view.fragments.CommentFragment"
+        android:label="CommentFragment" />
 </navigation>

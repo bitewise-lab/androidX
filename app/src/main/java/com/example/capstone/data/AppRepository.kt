@@ -13,6 +13,8 @@ import com.example.capstone.data.remote.response.SignUpResponse
 import com.example.capstone.data.remote.retrofit.ApiService
 import com.example.capstone.data.remote.response.LoginRequest
 import com.example.capstone.data.remote.response.PostResponse
+import com.example.capstone.data.remote.response.PredictResponse
+import com.example.capstone.data.remote.response.RecommendationsItem
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -207,6 +209,79 @@ class AppRepository(
 
         return liveData
     }
+
+    fun predictImage(
+        email: String,
+        image: Uri
+    ): LiveData<Result<PredictResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val descriptionBody = email.toRequestBody("text/plain".toMediaTypeOrNull())
+
+            val file = File(image.path!!)
+            if (!file.exists()) {
+                Log.e("IMG_PATH", "Image file does not exist")
+            }
+            val requestBody = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imagePart = MultipartBody.Part.createFormData("file", file.name, requestBody)
+
+            val token = userPref.getToken().first()
+            val response = apiService.predict("Bearer $token", descriptionBody, imagePart)
+            Log.d("TOKEN_INFO", "Posting with token: $token")
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message ?: "An error occurred"))
+            val token = userPref.getToken().first()
+            Log.d("TOKEN_INFO", "Posting with token: $token")
+        }
+    }
+
+    fun savePredictionResult(predictionResult: PredictResponse) {
+        val database = FirebaseDatabase.getInstance().getReference("predictions")
+        val predictionId = database.push().key ?: return
+        database.child(predictionId).setValue(predictionResult)
+            .addOnSuccessListener {
+                Log.d("AppRepository", "Prediction result saved successfully")
+            }
+            .addOnFailureListener { e ->
+                Log.e("AppRepository", "Failed to save prediction result", e)
+            }
+    }
+
+    fun getRecommendations(): LiveData<Result<List<RecommendationsItem>>> = liveData {
+        emit(Result.Loading)
+        val database = FirebaseDatabase.getInstance().getReference("predictions")
+        val recommendationsLiveData = MutableLiveData<Result<List<RecommendationsItem>>>()
+
+        database.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val recommendationsList = mutableListOf<RecommendationsItem>()
+                for (data in snapshot.children) {
+                    val prediction = data.getValue(PredictResponse::class.java)
+                    prediction?.recommendations?.let { recommendationsList.addAll(it) }
+                }
+                recommendationsLiveData.postValue(Result.Success(recommendationsList))
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                recommendationsLiveData.postValue(Result.Error(error.message))
+            }
+        })
+
+        emitSource(recommendationsLiveData)
+    }
+
+    fun deleteRecommendations() {
+        val database = FirebaseDatabase.getInstance().getReference("predictions")
+        database.removeValue()
+            .addOnSuccessListener {
+                Log.d("AppRepository", "Recommendations deleted successfully")
+            }
+            .addOnFailureListener { e ->
+                Log.e("AppRepository", "Failed to delete recommendations", e)
+            }
+    }
+
 
     companion object {
         @Volatile

@@ -168,6 +168,8 @@
                 android:textColorHint="@color/pallete_3"
                 app:boxStrokeColor="@color/pallete_2"
                 app:hintTextColor="@color/pallete_3"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/pallete_3"
                 app:shapeAppearanceOverlay="@style/roundedCorner"
                 android:layout_marginTop="20dp">
 

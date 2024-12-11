@@ -5,22 +5,21 @@
     <string name="heart_pulse">BPM</string>
     <string name="account">Account</string>
     <string name="fab">Floating Action Button</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="food_recomendation">Food recomendation</string>
+    <string name="food_recomendation">Food Recommendation</string>
     <string name="sugar">Sugar</string>
     <string name="protein">Protein</string>
-    <string name="carbo">Carbo</string>
+    <string name="carbo">Carbohydrates</string>
     <string name="fat">Fat</string>
     <string name="meal_name">Meal Name</string>
-    <string name="gram">3 gr</string>
+    <string name="gram">3 g</string>
     <string name="imageView">Image View</string>
     <string name="btn_camera">Camera</string>
     <string name="btn_galery">Gallery</string>
     <string name="btn_analyze">Analyze</string>
     <string name="register">Register</string>
     <string name="bitwise">Bitewise</string>
-    <string name="description">Dapatkan kontrol penuh atas kesehatan Anda! Bitwise membantu Anda memantau gizi makanan, menjadikan setiap pilihan lebih cerdas dan lebih sehat.</string>
+    <string name="description">Take full control of your health! Bitewise helps you monitor the nutrition of your food, making every choice smarter and healthier.</string>
     <string name="signin">Sign In</string>
     <string name="welcome">Welcome Back!</string>
     <string name="enter_your_details">Please enter your details</string>
@@ -37,14 +36,14 @@
     <string name="hint_sugar">Blood Sugar</string>
     <string name="hint_cholesterol">Cholesterol</string>
     <string name="hint_blood_pressure">Blood Pressure</string>
-    <string name="login_success">Login Success !</string>
-    <string name="permission_granted">Permission Granted !</string>
-    <string name="permission_denied">Permission Denied !</string>
+    <string name="login_success">Login Success!</string>
+    <string name="permission_granted">Permission Granted!</string>
+    <string name="permission_denied">Permission Denied!</string>
     <string name="hint_age">Input your Age!</string>
     <string name="hint_health_condition">Health Condition</string>
     <string name="hint_activity_level">Activity Level</string>
     <string name="sign_out">Logout</string>
-    <string name="sign_out_confirmation">Are you sure to Logout?</string>
+    <string name="sign_out_confirmation">Are you sure you want to logout?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="post">Post</string>
@@ -60,7 +59,16 @@
     <string name="nutrition_intake">Nutrition Intake</string>
     <string name="consumed_today">Consumed Today</string>
     <string name="bmi">BMI</string>
-
+    <string name="analysis_results">Analysis Results</string>
+    <string name="analyze">Analyze</string>
+    <string name="description_analytics">Analysis Description</string>
+    <string name="back">Back</string>
+    <string name="low">This food is considered safe for consumption. There are no indications that it would affect blood sugar, blood pressure, or pose other health risks.</string>
+    <string name="medium">This food has an impact that should be monitored. There is potential for an increase in blood sugar or blood pressure, so it is recommended to consume it with caution.</string>
+    <string name="high">This food is not recommended for consumption. The contents pose a significant risk of increasing blood sugar or blood pressure, which could negatively affect your health.</string>
+    <string name="error">Error: Data not found</string>
+    <string name="no_recomendation">No recommendation available. Please scan your meal first.</string>
+    <string name="wait">Please wait, we\'re scanning your meal.</string>
 
     <string-array name="health_condition_array">
         <item>Diabetic</item>

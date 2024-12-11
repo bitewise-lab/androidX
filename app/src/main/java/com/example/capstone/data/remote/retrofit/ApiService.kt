@@ -2,6 +2,7 @@ package com.example.capstone.data.remote.retrofit
 
 import com.example.capstone.data.remote.response.LoginRequest
 import com.example.capstone.data.remote.response.PostResponse
+import com.example.capstone.data.remote.response.PredictResponse
 import com.example.capstone.data.remote.response.SignInResponse
 import com.example.capstone.data.remote.response.SignUpResponse
 import okhttp3.MultipartBody
@@ -47,4 +48,12 @@ interface ApiService {
     suspend fun getStories(
         @Header("Authorization") token: String
     ): PostResponse
+
+    @Multipart
+    @POST("predict")
+    suspend fun predict(
+        @Header("Authorization") token: String,
+        @Part("email") email: RequestBody,
+        @Part imageFile: MultipartBody.Part
+    ): PredictResponse
 }

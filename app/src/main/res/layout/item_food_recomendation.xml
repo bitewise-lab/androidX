@@ -11,7 +11,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/pallete_2">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_meal"
@@ -35,7 +36,7 @@
             android:text="@string/meal_name"
             android:textSize="17sp"
             android:textStyle="bold"
-            android:textColor="@color/color_1"/>
+            android:textColor="@color/pallete_3"/>
 
         <View
             android:layout_width="match_parent"
@@ -44,7 +45,7 @@
             android:layout_marginStart="165dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="3dp"
-            android:background="@color/color_1"/>
+            android:background="@color/pallete_3"/>
 
         <!-- Sugar Info -->
         <TextView
@@ -59,7 +60,7 @@
             android:maxLines="2"
             android:text="@string/sugar"
             android:textSize="12sp"
-            android:textColor="@color/color_2"/>
+            android:textColor="@color/pallete_3"/>
 
         <TextView
             android:id="@+id/txt_sugar_value"
@@ -71,7 +72,7 @@
             android:layout_alignParentEnd="true"
             android:text="@string/gram"
             android:textSize="12sp"
-            android:textColor="@color/color_2"/>
+            android:textColor="@color/pallete_3"/>
 
         <!-- Fat Info -->
         <TextView
@@ -86,7 +87,7 @@
             android:maxLines="2"
             android:text="@string/fat"
             android:textSize="12sp"
-            android:textColor="@color/color_2"/>
+            android:textColor="@color/pallete_3"/>
 
         <TextView
             android:id="@+id/txt_fat_value"
@@ -98,7 +99,7 @@
             android:layout_alignParentEnd="true"
             android:text="@string/gram"
             android:textSize="12sp"
-            android:textColor="@color/color_2"/>
+            android:textColor="@color/pallete_3"/>
 
         <!-- Carbo Info -->
         <TextView
@@ -113,7 +114,7 @@
             android:maxLines="2"
             android:text="@string/carbo"
             android:textSize="12sp"
-            android:textColor="@color/color_2"/>
+            android:textColor="@color/pallete_3"/>
 
         <TextView
             android:id="@+id/txt_carbo_value"
@@ -125,7 +126,7 @@
             android:layout_alignParentEnd="true"
             android:text="@string/gram"
             android:textSize="12sp"
-            android:textColor="@color/color_2"/>
+            android:textColor="@color/pallete_3"/>
 
         <!-- Protein Info -->
         <TextView
@@ -140,7 +141,7 @@
             android:maxLines="2"
             android:text="@string/protein"
             android:textSize="12sp"
-            android:textColor="@color/color_2"/>
+            android:textColor="@color/pallete_3"/>
 
         <TextView
             android:id="@+id/txt_protein_value"
@@ -152,6 +153,6 @@
             android:layout_alignParentEnd="true"
             android:text="@string/gram"
             android:textSize="12sp"
-            android:textColor="@color/color_2"/>
+            android:textColor="@color/pallete_3"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

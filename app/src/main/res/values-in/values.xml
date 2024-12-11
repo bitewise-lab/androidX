@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bitewise</string>
+    <string name="home">Beranda</string>
+    <string name="analytics">Analisis</string>
+    <string name="heart_pulse">BPM</string>
+    <string name="account">Akun</string>
+    <string name="fab">Tombol Aksi Mengambang</string>
+    <string name="hello_blank_fragment">Halo fragmen kosong</string>
+    <string name="food_recomendation">Rekomendasi Makanan</string>
+    <string name="sugar">Gula</string>
+    <string name="protein">Protein</string>
+    <string name="carbo">Karbohidrat</string>
+    <string name="fat">Lemak</string>
+    <string name="meal_name">Nama Makanan</string>
+    <string name="gram">3 gr</string>
+    <string name="imageView">Tampilan Gambar</string>
+    <string name="btn_camera">Kamera</string>
+    <string name="btn_galery">Galeri</string>
+    <string name="btn_analyze">Analisis</string>
+    <string name="register">Daftar</string>
+    <string name="bitwise">Bitewise</string>
+    <string name="description">Ambil kendali penuh atas kesehatan Anda! Bitewise membantu Anda memantau gizi makanan Anda, menjadikan setiap pilihan lebih cerdas dan lebih sehat.</string>
+    <string name="signin">Masuk</string>
+    <string name="welcome">Selamat Datang Kembali!</string>
+    <string name="enter_your_details">Silakan masukkan detail Anda</string>
+    <string name="invalid_email">Email tidak valid!</string>
+    <string name="password_length_error">Kata sandi harus terdiri dari minimal 8 karakter!</string>
+    <string name="hint_email_input">Email</string>
+    <string name="hint_password_input">Kata Sandi</string>
+    <string name="hint_name">Masukkan Nama Anda!</string>
+    <string name="hint_username">Masukkan Nama Pengguna Anda!</string>
+    <string name="hint_email">Masukkan Email Anda!</string>
+    <string name="hint_password">Masukkan Kata Sandi Anda!</string>
+    <string name="hint_weight">Berat badan dalam Kg</string>
+    <string name="hint_height">Tinggi badan dalam Cm</string>
+    <string name="hint_sugar">Gula Darah</string>
+    <string name="hint_cholesterol">Kolesterol</string>
+    <string name="hint_blood_pressure">Tekanan Darah</string>
+    <string name="login_success">Login Berhasil!</string>
+    <string name="permission_granted">Izin Diberikan!</string>
+    <string name="permission_denied">Izin Ditolak!</string>
+    <string name="hint_age">Masukkan Usia Anda!</string>
+    <string name="hint_health_condition">Kondisi Kesehatan</string>
+    <string name="hint_activity_level">Tingkat Aktivitas</string>
+    <string name="sign_out">Keluar</string>
+    <string name="sign_out_confirmation">Apakah Anda yakin ingin keluar?</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="post">Pos</string>
+    <string name="comment">Komentar Anda di sini!</string>
+    <string name="add_a_comment">Tambahkan komentar</string>
+    <string name="no_post">Tidak ada Pos ditemukan</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="name">Nama</string>
+    <string name="search">Cari</string>
+    <string name="post_something">Posting Sesuatu</string>
+    <string name="add_meal">Tambah Makanan</string>
+    <string name="calories">Kalori</string>
+    <string name="nutrition_intake">Asupan Gizi</string>
+    <string name="consumed_today">Telah Terkonsumsi Hari Ini</string>
+    <string name="bmi">BMI</string>
+    <string name="analysis_results">Hasil Analisis</string>
+    <string name="analyze">Analisis</string>
+    <string name="description_analytics">Deskripsi Analisis</string>
+    <string name="back">Kembali</string>
+    <string name="low">Makanan ini dinilai aman untuk dikonsumsi. Tidak ada indikasi yang dapat memengaruhi kadar gula darah, tekanan darah, atau risiko kesehatan lainnya.</string>
+    <string name="medium">Makanan ini memiliki dampak yang perlu diperhatikan. Ada potensi peningkatan kadar gula darah atau tekanan darah, sehingga disarankan untuk mengonsumsinya dengan hati-hati.</string>
+    <string name="high">Makanan ini tidak disarankan untuk dikonsumsi. Kandungannya berisiko signifikan dalam meningkatkan kadar gula darah atau tekanan darah, yang dapat berdampak negatif pada kesehatan Anda.</string>
+    <string name="error">Error: Data tidak ditemukan</string>
+    <string name="no_recomendation">Tidak ada rekomendasi. Harap pindai makanan Anda terlebih dahulu.</string>
+    <string name="wait">Silakan tunggu, kami sedang memindai makanan Anda.</string>
+
+    <string-array name="health_condition_array">
+        <item>Diabetes</item>
+        <item>Obesitas</item>
+        <item>Penyakit Jantung</item>
+        <item>Sehat</item>
+        <item>Hipertensi</item>
+    </string-array>
+
+    <string-array name="activity_level_array">
+        <item>Rendah</item>
+        <item>Sedang</item>
+        <item>Tinggi</item>
+    </string-array>
+</resources>

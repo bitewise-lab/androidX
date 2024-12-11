@@ -27,6 +27,7 @@ import com.example.capstone.view.viewmodel.PostViewModel
 import com.example.capstone.view.viewmodel.ViewModelFactory
 import com.example.capstone.data.Result
 import com.example.capstone.view.adapters.PostAdapter
+import com.example.capstone.view.viewmodel.OcrViewModel
 import com.yalantis.ucrop.UCrop
 import java.io.File
 
@@ -35,6 +36,10 @@ class HomeFragment : Fragment() {
     private lateinit var postAdapter: PostAdapter
 
     private val viewModel by viewModels<PostViewModel> {
+        ViewModelFactory.getInstance(requireActivity())
+    }
+
+    private val predictViewModel by viewModels<OcrViewModel> {
         ViewModelFactory.getInstance(requireActivity())
     }
 
@@ -59,7 +64,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentHomePageBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -164,7 +168,6 @@ class HomeFragment : Fragment() {
                 }
                 is Result.Error -> {
                     binding.linearProgressBar.visibility = View.GONE
-//                    Toast.makeText(requireContext(), "Error: ${result.error}", Toast.LENGTH_SHORT).show()
                     binding.tvNoPost.visibility = View.VISIBLE
                     binding.rvPost.visibility = View.GONE
                 }

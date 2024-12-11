@@ -14,8 +14,4 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
-
-    <style name="textColor">
-        <item name="android:textColor">@color/pallete_3</item>
-    </style>
 </resources>

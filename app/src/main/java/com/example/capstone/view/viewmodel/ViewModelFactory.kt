@@ -30,6 +30,9 @@ class ViewModelFactory(private val repository: AppRepository, preferences: UserP
             modelClass.isAssignableFrom(CommentViewModel::class.java) -> {
                 CommentViewModel(repository) as T
             }
+            modelClass.isAssignableFrom(OcrViewModel::class.java) -> {
+                OcrViewModel(repository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
     }
