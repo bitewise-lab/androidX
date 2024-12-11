@@ -40,8 +40,9 @@
                     android:id="@+id/MealText"
                     android:layout_width="0dp"
                     android:layout_height="32dp"
+                    android:autofillHints=""
                     android:background="@null"
-                    android:hint="Meal Name"
+                    android:hint="@string/meal_name"
                     android:imeOptions="actionSearch"
                     android:inputType="text"
                     android:maxLines="1"
@@ -77,8 +78,9 @@
                     android:id="@+id/CaloriesText"
                     android:layout_width="0dp"
                     android:layout_height="32dp"
+                    android:autofillHints=""
                     android:background="@null"
-                    android:hint="Calories"
+                    android:hint="@string/calories"
                     android:imeOptions="actionSearch"
                     android:inputType="text"
                     android:maxLines="1"
@@ -102,7 +104,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView2"
-            android:text="Add Meal"
+            android:text="@string/add_meal"
             android:textColor="@color/color_4"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

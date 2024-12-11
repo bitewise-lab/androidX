@@ -3,6 +3,7 @@ package com.example.capstone.view.fragments
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -74,11 +75,20 @@ class AccountFragment : Fragment() {
         viewModel.getPostList().observe(viewLifecycleOwner) { posts ->
             when (posts) {
                 is Result.Success -> {
-                    val filteredPosts = posts.data.post?.filter { it?.name == currentUsername }
-                    myPostAdapter.submitList(filteredPosts)
+                    if(posts.data.post.isNullOrEmpty()) {
+                        binding.tvNoPost.visibility = View.VISIBLE
+                        binding.rvPostPerAccount.visibility = View.GONE
+                    } else {
+                        binding.tvNoPost.visibility = View.GONE
+                        binding.rvPostPerAccount.visibility = View.VISIBLE
+                        val filteredPosts = posts.data.post.filter { it?.name == currentUsername }
+                        myPostAdapter.submitList(filteredPosts)
+                    }
                 }
                 is Result.Error -> {
-                    Toast.makeText(context, posts.error, Toast.LENGTH_SHORT).show()
+                    binding.tvNoPost.visibility = View.VISIBLE
+                    binding.rvPostPerAccount.visibility = View.GONE
+                    Log.d("AccountFragment", "Error: ${posts.error}")
                 }
                 is Result.Loading -> { }
             }

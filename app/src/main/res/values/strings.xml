@@ -50,6 +50,16 @@
     <string name="post">Post</string>
     <string name="comment">Your comment here!</string>
     <string name="add_a_comment">Add a comment</string>
+    <string name="no_post">No Post Found</string>
+    <string name="username">Username</string>
+    <string name="name">Name</string>
+    <string name="search">Search</string>
+    <string name="post_something">Post Something</string>
+    <string name="add_meal">Add Meal</string>
+    <string name="calories">Calories</string>
+    <string name="nutrition_intake">Nutrition Intake</string>
+    <string name="consumed_today">Consumed Today</string>
+    <string name="bmi">BMI</string>
 
 
     <string-array name="health_condition_array">

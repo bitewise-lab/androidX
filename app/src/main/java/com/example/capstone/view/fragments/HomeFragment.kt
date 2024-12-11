@@ -153,15 +153,20 @@ class HomeFragment : Fragment() {
                     binding.linearProgressBar.visibility = View.GONE
                     val posts = result.data.post?.filterNotNull()
                     if (posts.isNullOrEmpty()) {
-                        Toast.makeText(context, "No posts available", Toast.LENGTH_SHORT).show()
+                        binding.tvNoPost.visibility = View.VISIBLE
+                        binding.rvPost.visibility = View.GONE
                     } else {
+                        binding.tvNoPost.visibility = View.GONE
+                        binding.rvPost.visibility = View.VISIBLE
                         postAdapter.submitList(posts)
                         Log.d("HomeFragment", "Data fetched: $posts")
                     }
                 }
                 is Result.Error -> {
                     binding.linearProgressBar.visibility = View.GONE
-                    Toast.makeText(requireContext(), "Error: ${result.error}", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "Error: ${result.error}", Toast.LENGTH_SHORT).show()
+                    binding.tvNoPost.visibility = View.VISIBLE
+                    binding.rvPost.visibility = View.GONE
                 }
             }
         }

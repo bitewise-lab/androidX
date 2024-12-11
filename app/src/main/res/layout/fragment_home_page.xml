@@ -28,8 +28,9 @@
                 android:id="@+id/searchEditText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:autofillHints=""
                 android:background="@null"
-                android:hint="Search"
+                android:hint="@string/search"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:maxLines="1"
@@ -46,6 +47,7 @@
                 android:id="@+id/searchIcon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:contentDescription="@string/search"
                 android:padding="12dp"
                 android:src="@drawable/ic_search"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +72,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/color_2"
+            android:background="@color/pallete_2"
             android:padding="12dp">
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -90,7 +92,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:hint="Post Something"
+                android:autofillHints=""
+                android:hint="@string/post_something"
+                android:inputType="text"
                 android:textColor="@color/color_5"
                 android:textColorHint="@color/color_5"
                 android:textStyle="bold"
@@ -104,6 +108,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginVertical="12dp"
+                android:contentDescription="@string/imageView"
                 android:src="@drawable/ic_image"
                 app:layout_constraintStart_toStartOf="@+id/editText"
                 app:layout_constraintTop_toBottomOf="@+id/editText" />
@@ -145,6 +150,22 @@
         app:layout_constraintTop_toBottomOf="@+id/view"
         android:paddingBottom="40dp"
         tools:listitem="@layout/item_post"/>
+
+    <TextView
+        android:id="@+id/tv_no_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/no_post"
+        android:textColor="@color/pallete_3"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:visibility="visible" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/linearProgressBar"
