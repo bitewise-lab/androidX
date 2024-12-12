@@ -78,6 +78,6 @@ dependencies {
 
 //    ksp(libs.room.compiler)
 
-    implementation(libs.firebase.bom)
+    implementation(platform(libs.firebase.bom))
 
 }

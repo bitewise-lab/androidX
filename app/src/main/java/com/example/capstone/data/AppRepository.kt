@@ -12,9 +12,11 @@ import com.example.capstone.data.remote.response.SignInResponse
 import com.example.capstone.data.remote.response.SignUpResponse
 import com.example.capstone.data.remote.retrofit.ApiService
 import com.example.capstone.data.remote.response.LoginRequest
+import com.example.capstone.data.remote.response.MealsResponse
 import com.example.capstone.data.remote.response.PostResponse
 import com.example.capstone.data.remote.response.PredictResponse
 import com.example.capstone.data.remote.response.RecommendationsItem
+import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -27,6 +29,9 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class AppRepository(
@@ -34,6 +39,7 @@ class AppRepository(
     private val userPref: UserPref
 ) {
     private val database: DatabaseReference = FirebaseDatabase.getInstance().getReference("posts")
+    private val databaseMeal : DatabaseReference = FirebaseDatabase.getInstance().getReference("meals")
 
     fun register(
         name: String,
@@ -280,6 +286,59 @@ class AppRepository(
             .addOnFailureListener { e ->
                 Log.e("AppRepository", "Failed to delete recommendations", e)
             }
+    }
+
+    fun saveMeal(mealResponse: MealsResponse): Task<Void> {
+        val mealRef = databaseMeal.push() // Generate a unique key using push()
+        val mealId = mealRef.key // Get the generated key
+        return mealRef.setValue(mealResponse.copy(mealsId = mealId)) // Set the value with the generated ID
+    }
+
+    fun fetchMealsByUsername(username: String): LiveData<List<MealsResponse>> {
+        val mealsLiveData = MutableLiveData<List<MealsResponse>>()
+
+        databaseMeal.orderByChild("user").equalTo(username).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val mealList = mutableListOf<MealsResponse>()
+                for (mealSnapshot in snapshot.children) {
+                    val meal = mealSnapshot.getValue(MealsResponse::class.java)
+                    meal?.let { mealList.add(it) }
+                }
+                mealsLiveData.value = mealList // Update LiveData with the retrieved meals
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle possible errors
+                mealsLiveData.value = emptyList() // Optionally handle error case
+            }
+        })
+
+        return mealsLiveData
+    }
+
+    fun getTodaysCalories(username: String): LiveData<Float> {
+        val totalCaloriesLiveData = MutableLiveData<Float>()
+        val todayDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+
+        databaseMeal.orderByChild("user").equalTo(username).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var totalCalories = 0F
+                for (mealSnapshot in snapshot.children) {
+                    val meal = mealSnapshot.getValue(MealsResponse::class.java)
+                    if (meal != null && meal.date == todayDate) {
+                        totalCalories += meal.mealsCalories.toFloat() // Assuming MealsCalories is a String
+                    }
+                }
+                totalCaloriesLiveData.value = totalCalories // Update LiveData with the total calories
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle possible errors
+                totalCaloriesLiveData.value = 0F // Optionally handle error case
+            }
+        })
+
+        return totalCaloriesLiveData
     }
 
 
