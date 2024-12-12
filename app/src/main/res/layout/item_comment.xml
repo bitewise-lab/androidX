@@ -32,7 +32,7 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/img_user"
             android:ellipsize="end"
-            android:maxLines="2"
+            android:maxLines="1"
             android:text="@string/meal_name"
             android:textColor="@color/color_2"
             android:textSize="15sp"
@@ -46,8 +46,6 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/img_user"
-            android:ellipsize="end"
-            android:maxLines="1"
             android:text="@string/comment"
             android:textColor="@color/color_2"
             android:textSize="12sp" />

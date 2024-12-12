@@ -50,7 +50,6 @@
             android:layout_margin="20dp"
             android:gravity="center"
             android:textSize="18sp"
-            android:maxLines="3"
             android:textColor="@color/pallete_3"
             tools:text="@string/description_analytics" />
 
