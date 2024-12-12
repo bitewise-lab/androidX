@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="color_1">#39455B </color>
+    <color name="color_2">#0C111B </color>
+    <color name="color_3">#7A92A9</color>
+    <color name="color_4">#39455B </color>
+    <color name="color_5">#C3D1E2 </color>
+    <color name="color_6">#617C9A </color>
     <!-- Dark Mode Colors -->
-    <color name="pallete_1">#2C302E</color>
-    <color name="pallete_2">#474A48</color>
-    <color name="pallete_3">#909590</color>
-    <color name="pallete_4">#9AE19D</color>
-    <color name="pallete_6">#537A5A</color>
-    <color name="pallete_5">#093127</color>
+    <color name="pallete_1">#39455B </color>
+    <color name="pallete_2">#0C111B </color>
+    <color name="pallete_3">#7A92A9 </color>
+    <color name="pallete_4">#617C9A </color>
+    <color name="pallete_5">#39455B </color>
+    <color name="pallete_6">#C3D1E2 </color>
+    <color name="pallete_7">#FFFFFF</color>
+
+
 </resources>
