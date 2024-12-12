@@ -136,7 +136,6 @@ class AccountFragment : Fragment() {
 
             parentFragmentManager.beginTransaction().detach(this).attach(this).commit()
             startActivity(requireActivity().intent)
-            activity?.finish()
             Log.d("ThemeToggle", "Activity restarted")
         }
     }

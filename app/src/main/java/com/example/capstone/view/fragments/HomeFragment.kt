@@ -229,4 +229,14 @@ class HomeFragment : Fragment() {
         super.onResume()
         observeViewModel()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            requireActivity().window.insetsController?.show(WindowInsets.Type.statusBars())
+        } else {
+            requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        }
+        requireActivity().actionBar?.show()
+    }
 }

@@ -289,9 +289,9 @@ class AppRepository(
     }
 
     fun saveMeal(mealResponse: MealsResponse): Task<Void> {
-        val mealRef = databaseMeal.push() // Generate a unique key using push()
-        val mealId = mealRef.key // Get the generated key
-        return mealRef.setValue(mealResponse.copy(mealsId = mealId)) // Set the value with the generated ID
+        val mealRef = databaseMeal.push()
+        val mealId = mealRef.key
+        return mealRef.setValue(mealResponse.copy(mealsId = mealId))
     }
 
     fun fetchMealsByUsername(username: String): LiveData<List<MealsResponse>> {
@@ -304,12 +304,11 @@ class AppRepository(
                     val meal = mealSnapshot.getValue(MealsResponse::class.java)
                     meal?.let { mealList.add(it) }
                 }
-                mealsLiveData.value = mealList // Update LiveData with the retrieved meals
+                mealsLiveData.value = mealList
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Handle possible errors
-                mealsLiveData.value = emptyList() // Optionally handle error case
+                mealsLiveData.value = emptyList()
             }
         })
 
@@ -326,17 +325,16 @@ class AppRepository(
                 for (mealSnapshot in snapshot.children) {
                     val meal = mealSnapshot.getValue(MealsResponse::class.java)
                     if (meal != null && meal.date == todayDate) {
-                        totalCalories += meal.mealsCalories.toFloat() // Assuming MealsCalories is a String
+                        totalCalories += meal.mealsCalories.toFloat()
                     } else {
                         mealSnapshot.ref.removeValue()
                     }
                 }
-                totalCaloriesLiveData.value = totalCalories // Update LiveData with the total calories
+                totalCaloriesLiveData.value = totalCalories
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Handle possible errors
-                totalCaloriesLiveData.value = 0F // Optionally handle error case
+                totalCaloriesLiveData.value = 0F
             }
         })
 
