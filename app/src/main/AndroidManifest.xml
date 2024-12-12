@@ -30,7 +30,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".view.activities.WelcomeActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Capstone.MySplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

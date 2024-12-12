@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.lifecycleScope
 import com.example.capstone.data.pref.UserPref
@@ -20,6 +21,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         val sharedPreferences = getSharedPreferences("theme_prefs", Context.MODE_PRIVATE)
         val isDarkMode = sharedPreferences.getBoolean("is_dark_mode", false)
         if (isDarkMode) {
