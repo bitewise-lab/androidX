@@ -327,6 +327,8 @@ class AppRepository(
                     val meal = mealSnapshot.getValue(MealsResponse::class.java)
                     if (meal != null && meal.date == todayDate) {
                         totalCalories += meal.mealsCalories.toFloat() // Assuming MealsCalories is a String
+                    } else {
+                        mealSnapshot.ref.removeValue()
                     }
                 }
                 totalCaloriesLiveData.value = totalCalories // Update LiveData with the total calories

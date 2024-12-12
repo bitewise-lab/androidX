@@ -68,6 +68,13 @@ class BpmFragment : Fragment() {
         }
         viewModel.todaysCalories.observe(viewLifecycleOwner) { totalCalories ->
             viewModel.getSession().observe(requireActivity()) { user ->
+                if(totalCalories == 0f){
+                    binding.tvEatSomething.visibility = View.VISIBLE
+                    binding.rvMeals.visibility = View.GONE
+                } else {
+                    binding.tvEatSomething.visibility = View.GONE
+                    binding.rvMeals.visibility = View.VISIBLE
+                }
                 startCaloriesBar(totalCalories, user.weight.toFloat())
             }
         }
@@ -77,7 +84,7 @@ class BpmFragment : Fragment() {
         val caloriesNeed = 15 * weight + 587.5F
         binding.CaloriesBar.setMaxValues(caloriesNeed)
         binding.CaloriesBar.setCurrentValues(calories)
-        binding.BMiBar.setUnit("Calories")
+        binding.CaloriesBar.setUnit("Calories")
     }
 
     private fun startBMIBar(bmi: Float) {

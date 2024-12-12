@@ -14,7 +14,8 @@
         android:layout_marginEnd="16dp"
         android:text="@string/food_recomendation"
         android:textSize="24sp"
-        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textColor="@color/pallete_3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

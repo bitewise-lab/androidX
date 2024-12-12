@@ -69,6 +69,7 @@
     <string name="error">Error: Data not found</string>
     <string name="no_recomendation">No recommendation available. Please scan your meal first.</string>
     <string name="wait">Please wait, we\'re scanning your meal.</string>
+    <string name="eat_something">You need to eat something</string>
 
     <string-array name="health_condition_array">
         <item>Diabetic</item>

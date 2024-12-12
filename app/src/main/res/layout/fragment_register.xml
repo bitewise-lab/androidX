@@ -303,32 +303,6 @@
 
             </LinearLayout>
 
-            <!--        <Spinner-->
-            <!--            android:id="@+id/spinner_health_condition"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="55dp"-->
-            <!--            android:layout_marginTop="20dp"-->
-            <!--            android:entries="@array/health_condition_array"-->
-            <!--            android:importantForAccessibility="yes"-->
-            <!--            android:spinnerMode="dropdown"-->
-            <!--            android:popupBackground="@drawable/rounded_spinner_background"-->
-            <!--            android:layout_gravity="center"-->
-            <!--            android:background="@drawable/rounded_spinner_background"-->
-            <!--            />-->
-
-            <!--        <Spinner-->
-            <!--            android:id="@+id/spinner_activity_level"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="55dp"-->
-            <!--            android:layout_marginTop="20dp"-->
-            <!--            android:entries="@array/activity_level_array"-->
-            <!--            android:importantForAccessibility="yes"-->
-            <!--            android:spinnerMode="dropdown"-->
-            <!--            android:popupBackground="@drawable/rounded_spinner_background"-->
-            <!--            android:layout_gravity="center"-->
-            <!--            android:background="@drawable/rounded_spinner_background"-->
-            <!--            style="@style/textColor"/>-->
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

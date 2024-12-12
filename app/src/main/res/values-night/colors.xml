@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Mode Colors -->
+    <color name="pallete_1">#2C302E</color>
+    <color name="pallete_2">#474A48</color>
+    <color name="pallete_3">#909590</color>
+    <color name="pallete_4">#9AE19D</color>
+    <color name="pallete_6">#537A5A</color>
+    <color name="pallete_5">#093127</color>
+</resources>

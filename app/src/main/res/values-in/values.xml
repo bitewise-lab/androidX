@@ -70,6 +70,7 @@
     <string name="error">Error: Data tidak ditemukan</string>
     <string name="no_recomendation">Tidak ada rekomendasi. Harap pindai makanan Anda terlebih dahulu.</string>
     <string name="wait">Silakan tunggu, kami sedang memindai makanan Anda.</string>
+    <string name="eat_something">Anda belum makan</string>
 
     <string-array name="health_condition_array">
         <item>Diabetes</item>
